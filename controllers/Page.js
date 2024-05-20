@@ -85,7 +85,7 @@ export const getPagesByBookId = async (req, res) => {
                 }
             ],
             order: [
-                ['created_at', 'ASC']
+                ['createdAt', 'ASC']
             ]
         });
 
