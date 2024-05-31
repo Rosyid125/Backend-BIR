@@ -26,11 +26,10 @@ const Books = db.define(
         },
         },
         summary: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 notEmpty: true,
-                len: [3, 500],
             },
         },
         music: {
