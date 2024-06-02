@@ -1,5 +1,5 @@
 import express from 'express';
-import { CreateBook, getAllBooks, deleteBook, getBookById, updateBook } from '../controllers/Book.js';
+import { CreateBook, getAllBooks, deleteBook, getBookById, updateBook, searchBooks } from '../controllers/Book.js';
 import { getPagesByBookId } from "../controllers/Page.js";
 import upload from "../middleware/Upload.js";
 
@@ -7,6 +7,9 @@ const router = express.Router();
 
 // GET /books
 router.get('/', getAllBooks);
+
+// GET /books/search
+router.get('/search', searchBooks);
 
 // // GET /books/:id
 router.get('/:id', getBookById);

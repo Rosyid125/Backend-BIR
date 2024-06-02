@@ -3,6 +3,7 @@ import UserModel from "../models/UserModel.js";
 import { v4 as uuidv4 } from "uuid";
 import fs from "fs";
 import path from 'path';
+import { Op } from "sequelize";
 
 
 export const CreateBook = async (req, res) => {
@@ -97,3 +98,22 @@ export const deleteBook = async (req, res) => {
         res.status(400).json({ msg: error.message });
     }
 }
+
+export const searchBooks = async (req, res) => {
+    const { query } = req.query;
+
+    try {
+        const books = await Books.findAll({
+            where: {
+                title: {
+                    [Op.like]: `%${query}%`,
+                },
+            },
+        
+        });
+
+        res.status(200).json(books);
+    } catch (error) {
+        res.status(400).json({ msg: error.message });
+    }
+};
